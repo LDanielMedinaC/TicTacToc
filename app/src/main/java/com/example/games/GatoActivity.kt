@@ -165,4 +165,7 @@ class GatoActivity : AppCompatActivity() {
         var pair = nextFicha(arr!![0], arr!![1])
         gameOn(pair.first,pair.second)
     }
+    //el algoritmo es recursivo ya que se llama así mismo en cada ocación con la finalidad de analizar todos los posibles casos que hay del arbol y selecciona la posibilidad que más le convenga dependiendo de los pesos asignados
+    //depth es el valor evaluado a cuantos movimientos quedan para finalizar el juego
+    //se calcula a partir de cuantas veces se llama recursivamente el algoritmo, se le resta 1 cada vez que se llama y finalmente al llegar a 0 se llega al caso base
 }
