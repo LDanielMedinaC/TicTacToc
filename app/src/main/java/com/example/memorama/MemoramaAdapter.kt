@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.games.R
 import kotlinx.android.synthetic.main.renglon.view.*
 import java.util.logging.Handler
@@ -60,7 +61,6 @@ class MemoramaAdapter(val chips: ArrayList<Chip>, val textView: TextView):
 
     }
 
-
     fun shuffle(){
         for (i in 0..15)
             for(j in 0..(img.size - 2)){
@@ -85,6 +85,30 @@ class MemoramaAdapter(val chips: ArrayList<Chip>, val textView: TextView):
                 found.add(id.getId())
                 id1 = null
                 textView.setText("score: ${score[0]} player 1, ${score[1]} player 2")
+                if((score[0]+score[1])==8){
+                    if(score[0]>score[1])
+                    {
+                        textView.setText("PLAYER ONE WINS!")
+                        score[0] = 0
+                        score[1] = 1
+                        //shuffle()
+                    }
+                    else if(score[0]==score[1])
+                    {
+                        textView.setText("TIE!!!")
+                        score[0] = 0
+                        score[1] = 1
+                        //shuffle()
+                    }
+                    else
+                    {
+                        textView.setText("PLAYER TWO WINS")
+                        score[0] = 0
+                        score[1] = 1
+                        //shuffle()
+                    }
+                }
+
             }else{
                 android.os.Handler().postDelayed(Runnable {
                     id1!!.setImageResource(R.mipmap.ic_launcher)
